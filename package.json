@@ -1,0 +1,32 @@
+{
+  "name": "quiz-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon node src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chalk-animation": "^1.6.1",
+    "@types/inquirer": "^9.0.3",
+    "nodemon": "^2.0.20",
+    "rome": "^11.0.0",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "@types/node": "*",
+    "chalk": "^5.2.0",
+    "chalk-animation": "^2.0.3",
+    "figlet": "^1.5.2",
+    "gradient-string": "^2.0.2",
+    "inquirer": "^9.1.4",
+    "ora": "^6.1.2",
+    "prompts": "^2.4.2",
+    "typescript": "^4.9.5",
+    "zod": "^3.20.6"
+  }
+}
