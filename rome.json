@@ -1,0 +1,25 @@
+{
+    "organizeImports": {
+        "enabled": false
+    },
+    "formatter": {
+        "enabled": true,
+        "indentStyle": "space",
+        "lineWidth": 120,
+        "indentSize": 4
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "double",
+            "trailingComma": "es5",
+            "semicolons": "always"
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true
+        },
+        "ignore": ["dedent.ts"]
+    }
+}
