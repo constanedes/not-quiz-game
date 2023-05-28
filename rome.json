@@ -19,7 +19,9 @@
         "enabled": true,
         "rules": {
             "recommended": true
-        },
-        "ignore": ["dedent.ts"]
+        }
+    },
+    "files": {
+        "ignore": ["src/utils/logger.ts"]
     }
 }
