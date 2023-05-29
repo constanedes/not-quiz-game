@@ -14,11 +14,13 @@
     "build:watch": "tsc -w",
     "build:bin": "pkg -C GZip --out-dir bin build/src/index.js",
     "prestart": "pnpm i && pnpm run build",
-    "watch": "node --watch build/src/index.js",
     "lint": "rome format src --verbose && rome check src --verbose",
+    "dev": "nodemon build/src/index.js",
     "format": "rome format src --write",
-    "dev": "concurrently \"tsc -w\" \"nodemon build/src/index.js\"",
     "start": "node build/src/index.js"
+  },
+  "nodemonConfig": {
+    "stdin": false
   },
   "keywords": [
     "game",
@@ -27,7 +29,6 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "8.0.1",
     "nodemon": "2.0.22",
     "pkg": "5.8.1",
     "rome": "12.1.2",

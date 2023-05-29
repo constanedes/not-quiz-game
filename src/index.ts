@@ -101,11 +101,11 @@ async function handleAnswer(question: IQuestion, userAnswer: string) {
 
 async function main() {
     welcome();
-    /* console.log(questionsFilePath);
+    console.log(questionsFilePath);
     const nextQuestion = await getRandomQuestion();
     if (nextQuestion) {
         viewNextQuestionOptions(nextQuestion);
-    } */
+    } 
 }
 
 main();
