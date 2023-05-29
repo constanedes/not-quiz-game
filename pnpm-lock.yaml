@@ -1,9 +1,6 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  '@types/chalk-animation':
-    specifier: 1.6.1
-    version: 1.6.1
   '@types/figlet':
     specifier: 1.5.6
     version: 1.5.6
@@ -189,10 +186,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@types/chalk-animation@1.6.1:
-    resolution: {integrity: sha512-MSuZqFkBeKcik4oMzd/BjaTRYkLpNftRSYkI/oszmckHAZOTSKslWR1CRdURwsxXBgYHPRlb5JM6Cx+tkyXUAg==}
-    dev: false
 
   /@types/figlet@1.5.6:
     resolution: {integrity: sha512-AOdn9cKJGXpqfHeif16xeGMwWefB4nsOyxkdRMpc+PEP3nUxzu3psJfIqhjrCNW4Sejt5i6rISWmEwK0sw03mA==}
