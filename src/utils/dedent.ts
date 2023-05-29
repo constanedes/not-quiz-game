@@ -1,4 +1,7 @@
-export default function dedent(callSite: TemplateStringsArray, ...args: any[]): string | ((...args: any[]) => string) {
+export default function dedent(
+    callSite: TemplateStringsArray,
+    ...args: unknown[]
+): string | ((...args: unknown[]) => string) {
     function format(str: string): string {
         let size = -1;
         return str.replace(/\n(\s+)/g, (m: string, m1: string) => {
