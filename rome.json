@@ -1,18 +1,24 @@
 {
+    "organizeImports": {
+        "enabled": false
+    },
     "formatter": {
-      "enabled": true,
-      "indentStyle": "space",
-      "indentSize": 4,
-      "lineWidth": 100
+        "enabled": true,
+        "indentStyle": "space",
+        "lineWidth": 120,
+        "indentSize": 4
     },
     "javascript": {
         "formatter": {
-            "quoteStyle": "single",
+            "quoteStyle": "double",
             "trailingComma": "es5",
             "semicolons": "always"
         }
     },
     "linter": {
-      "enabled": false
+        "enabled": true,
+        "rules": {
+            "recommended": true
+        }
     }
 }
