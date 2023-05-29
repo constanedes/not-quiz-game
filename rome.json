@@ -20,8 +20,5 @@
         "rules": {
             "recommended": true
         }
-    },
-    "files": {
-        "ignore": ["src/utils/logger.ts"]
     }
 }
