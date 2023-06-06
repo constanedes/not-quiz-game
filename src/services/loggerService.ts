@@ -31,7 +31,7 @@ export default class LoggerService implements ILoggerService {
     private getFormattedMessage(level: LogLevel, message: string) {
         const timestamp = new Date().toISOString();
         const levelKey = LogLevel[level].toUpperCase();
-        const logType = {
+        const logColor = {
             [LogLevel.Trace]: chalk.gray,
             [LogLevel.Log]: chalk.blue,
             [LogLevel.Info]: chalk.green,
@@ -40,57 +40,38 @@ export default class LoggerService implements ILoggerService {
             [LogLevel.Debug]: chalk.magenta,
         };
         return {
-            msgColored: `[${logType[level](timestamp)}][${logType[level](levelKey)}] - ${message}`,
+            msgColored: `[${logColor[level](timestamp)}][${logColor[level](levelKey)}] - ${message}`,
             msgUncolored: `[${timestamp}][${levelKey}] - ${message}`,
         };
     }
 
     private writeLog(level: LogLevel, message: string, optionalParams?: unknown[]): void {
-        const { msgColored, msgUncolored } = this.getFormattedMessage(level, message);
-        switch (level) {
-            case LogLevel.Trace:
-                optionalParams ? console.trace(msgColored, optionalParams) : console.trace(msgColored);
-                break;
-            case LogLevel.Log:
-                optionalParams ? console.log(msgColored, optionalParams) : console.log(msgColored);
-                break;
-            case LogLevel.Info:
-                optionalParams ? console.info(msgColored, optionalParams) : console.info(msgColored);
-                break;
-            case LogLevel.Warning:
-                optionalParams ? console.warn(msgColored, optionalParams) : console.warn(msgColored);
-                break;
-            case LogLevel.Error:
-                optionalParams ? console.error(msgColored, optionalParams) : console.error(msgColored);
-                break;
-            case LogLevel.Debug:
-                optionalParams ? console.debug(msgColored, optionalParams) : console.debug(msgColored);
-                break;
-        }
+        const { msgUncolored } = this.getFormattedMessage(level, message);
+
         fs.appendFileSync(this.logFilePath, msgUncolored + "\n", "utf-8");
     }
 
-    trace(message: string, optionalParams?: Array<unknown>): void {
-        this.writeLog(LogLevel.Trace, message, optionalParams);
+    trace(message: string): void {
+        this.writeLog(LogLevel.Trace, message);
     }
 
-    log(message: string, optionalParams?: Array<unknown>): void {
-        this.writeLog(LogLevel.Log, message, optionalParams);
+    log(message: string): void {
+        this.writeLog(LogLevel.Log, message);
     }
 
-    debug(message: string, optionalParams?: Array<unknown>): void {
-        this.writeLog(LogLevel.Debug, message, optionalParams);
+    debug(message: string): void {
+        this.writeLog(LogLevel.Debug, message);
     }
 
-    info(message: string, optionalParams?: Array<unknown>): void {
-        this.writeLog(LogLevel.Info, message, optionalParams);
+    info(message: string): void {
+        this.writeLog(LogLevel.Info, message);
     }
 
-    warning(message: string, optionalParams?: Array<unknown>): void {
-        this.writeLog(LogLevel.Warning, message, optionalParams);
+    warning(message: string): void {
+        this.writeLog(LogLevel.Warning, message);
     }
 
-    error(message: string, optionalParams?: Array<unknown>): void {
-        this.writeLog(LogLevel.Error, message, optionalParams);
+    error(message: string): void {
+        this.writeLog(LogLevel.Error, message);
     }
 }
