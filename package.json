@@ -29,16 +29,16 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@types/figlet": "1.5.6",
+    "@types/gradient-string": "1.1.2",
+    "@types/inquirer": "9.0.3",
+    "@types/node": "20.2.5",
     "nodemon": "2.0.22",
     "pkg": "5.8.1",
     "rome": "12.1.2",
     "typescript": "5.0.4"
   },
   "dependencies": {
-    "@types/figlet": "1.5.6",
-    "@types/gradient-string": "1.1.2",
-    "@types/inquirer": "9.0.3",
-    "@types/node": "20.2.5",
     "chalk": "4.1.2",
     "figlet": "1.6.0",
     "gradient-string": "2.0.2",
