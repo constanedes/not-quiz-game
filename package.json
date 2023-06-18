@@ -13,7 +13,6 @@
     "build": "tsc",
     "build:watch": "tsc -w",
     "prepare": "git config --local core.hooksPath .githooks",
-    "build:bin": "pkg -C GZip --out-dir bin build/src/index.js",
     "prestart": "pnpm i && pnpm run build",
     "lint": "rome format src --verbose && rome check src --verbose",
     "dev": "nodemon build/src/index.js",
@@ -36,7 +35,6 @@
     "@types/inquirer": "9.0.3",
     "@types/node": "20.2.5",
     "nodemon": "2.0.22",
-    "pkg": "5.8.1",
     "rome": "12.1.2",
     "typescript": "5.0.4"
   },
