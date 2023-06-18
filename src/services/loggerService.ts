@@ -1,7 +1,9 @@
-import fs from "fs";
+import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
 import ILoggerService from "../interfaces/ILoggerService";
+import { DependencyLifeTime, Injectable } from "@miracledevs/paradigm-web-di";
+import FileStorageService from "./FileStorageService";
 
 enum LogLevel {
     Trace = 0,
@@ -12,20 +14,14 @@ enum LogLevel {
     Error = 5,
 }
 
+@Injectable({ lifeTime: DependencyLifeTime.Singleton })
 export default class LoggerService implements ILoggerService {
     private static instance: LoggerService;
     private logFilePath: string;
 
-    private constructor() {
+    public constructor() {
         const rootPath = process.cwd();
         this.logFilePath = path.join(rootPath, "logs.txt");
-    }
-
-    static getInstance(): LoggerService {
-        if (!LoggerService.instance) {
-            LoggerService.instance = new LoggerService();
-        }
-        return LoggerService.instance;
     }
 
     private getFormattedMessage(level: LogLevel, message: string) {
@@ -45,33 +41,35 @@ export default class LoggerService implements ILoggerService {
         };
     }
 
-    private writeLog(level: LogLevel, message: string, optionalParams?: unknown[]): void {
-        const { msgUncolored } = this.getFormattedMessage(level, message);
-
+    private writeLog(level: LogLevel, message: unknown): void {
+        const { msgUncolored } =
+            message instanceof Error
+                ? this.getFormattedMessage(level, message.message)
+                : this.getFormattedMessage(level, message as string);
         fs.appendFileSync(this.logFilePath, msgUncolored + "\n", "utf-8");
     }
 
-    trace(message: string): void {
+    trace(message: unknown): void {
         this.writeLog(LogLevel.Trace, message);
     }
 
-    log(message: string): void {
+    log(message: unknown): void {
         this.writeLog(LogLevel.Log, message);
     }
 
-    debug(message: string): void {
+    debug(message: unknown): void {
         this.writeLog(LogLevel.Debug, message);
     }
 
-    info(message: string): void {
+    info(message: unknown): void {
         this.writeLog(LogLevel.Info, message);
     }
 
-    warning(message: string): void {
+    warning(message: unknown): void {
         this.writeLog(LogLevel.Warning, message);
     }
 
-    error(message: string): void {
+    error(message: unknown): void {
         this.writeLog(LogLevel.Error, message);
     }
 }

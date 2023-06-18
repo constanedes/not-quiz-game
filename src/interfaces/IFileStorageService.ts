@@ -1,4 +1,4 @@
-import { JsonObject } from "../types/json";
+import { JsonObject } from "type-fest";
 
 export interface IFileStorageService {
     readJsonFile(filePath: string, parse: boolean): string | unknown;
