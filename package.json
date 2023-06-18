@@ -12,6 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "build:watch": "tsc -w",
+    "prepare": "git config --local core.hooksPath .githooks",
     "build:bin": "pkg -C GZip --out-dir bin build/src/index.js",
     "prestart": "pnpm i && pnpm run build",
     "lint": "rome format src --verbose && rome check src --verbose",

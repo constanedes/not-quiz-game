@@ -42,9 +42,7 @@ export function welcome() {
 }
 
 export function showCredits() {
-    const authorColor = chalk.hex("#54a7c7");
     console.log(dedent`
-        ${authorColor("Author: Constantino Edes")}
-        Version: 1.0.0`
-    );
+        ${chalk.cyanBright("Author: Constantino Edes")}
+        Version: 1.0.0`);
 }
