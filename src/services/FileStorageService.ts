@@ -1,5 +1,5 @@
 import { DependencyLifeTime, Injectable } from "@miracledevs/paradigm-web-di";
-import fs from "fs";
+import fs from "node:fs";
 import { IFileStorageService } from "../interfaces/IFileStorageService.js";
 import { JsonObject } from "type-fest";
 import LoggerService from "./LoggerService.js";

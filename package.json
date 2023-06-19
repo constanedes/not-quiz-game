@@ -2,36 +2,43 @@
   "name": "quiz-game",
   "version": "1.0.0",
   "description": "A CLI based interactive question and answer game",
-  "type": "module",
-  "author": "Constantino Edes <constantinoedes@gmail.com> (constantinoedes.dev)",
-  "main": "build/src/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/constanedes/quiz-game.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "build:watch": "tsc -w",
-    "prepare": "git config --local core.hooksPath .githooks",
-    "prestart": "pnpm i && pnpm run build",
-    "lint": "rome format src --verbose && rome check src --verbose",
-    "dev": "nodemon build/src/index.js",
-    "format": "rome format src --write",
-    "start": "node build/src/index.js"
-  },
-  "nodemonConfig": {
-    "stdin": false
-  },
-  "engines": {
-    "node": ">=16"
-  },
   "keywords": [
     "game",
     "quiz",
     "cli"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/constanedes/quiz-game.git"
+  },
   "license": "MIT",
+  "author": "Constantino Edes <constantinoedes@gmail.com> (constantinoedes.dev)",
+  "type": "module",
+  "main": "build/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "dev": "nodemon build/src/index.js",
+    "format": "rome format src --write",
+    "lint": "rome format src --verbose && rome check --apply-unsafe src",
+    "prepare": "git config --local core.hooksPath .githooks",
+    "prestart": "pnpm i && pnpm run build",
+    "start": "node build/src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "stdin": false
+  },
+  "dependencies": {
+    "@miracledevs/paradigm-web-di": "1.0.3",
+    "chalk": "5.2.0",
+    "figlet": "1.6.0",
+    "fs-extra": "11.1.1",
+    "gradient-string": "2.0.2",
+    "inquirer": "9.2.7",
+    "ora": "6.3.1",
+    "type-fest": "3.12.0"
+  },
   "devDependencies": {
     "@types/figlet": "1.5.6",
     "@types/fs-extra": "11.0.1",
@@ -43,14 +50,7 @@
     "rome": "12.1.3",
     "typescript": "5.1.3"
   },
-  "dependencies": {
-    "@miracledevs/paradigm-web-di": "1.0.3",
-    "chalk": "5.2.0",
-    "figlet": "1.6.0",
-    "fs-extra": "11.1.1",
-    "gradient-string": "2.0.2",
-    "inquirer": "9.2.7",
-    "ora": "6.3.1",
-    "type-fest": "3.12.0"
+  "engines": {
+    "node": ">=16"
   }
 }
