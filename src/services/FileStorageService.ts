@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { IFileStorageService } from "../interfaces/IFileStorageService.js";
 import { JsonObject } from "type-fest";
-import LoggerService from "./LoggerService.js";
+import LoggerService from "./loggerService.js";
 
 export default class FileStorageService implements IFileStorageService {
     logger: LoggerService;
