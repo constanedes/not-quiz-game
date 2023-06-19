@@ -1,12 +1,14 @@
-import { DependencyLifeTime, Injectable } from "@miracledevs/paradigm-web-di";
 import fs from "node:fs";
 import { IFileStorageService } from "../interfaces/IFileStorageService.js";
 import { JsonObject } from "type-fest";
 import LoggerService from "./LoggerService.js";
 
-@Injectable({ lifeTime: DependencyLifeTime.Singleton })
 export default class FileStorageService implements IFileStorageService {
-    public constructor(private readonly logger: LoggerService) {}
+    logger: LoggerService;
+
+    public constructor() {
+        this.logger = new LoggerService();
+    }
 
     readJsonFile(filePath: string, parse: boolean): string | unknown {
         try {

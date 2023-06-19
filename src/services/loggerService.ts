@@ -2,7 +2,6 @@ import fs from "fs-extra";
 import path from "node:path";
 import chalk from "chalk";
 import ILoggerService from "../interfaces/ILoggerService.js";
-import { DependencyLifeTime, Injectable } from "@miracledevs/paradigm-web-di";
 
 enum LogLevel {
     Trace = 0,
@@ -13,7 +12,6 @@ enum LogLevel {
     Error = 5,
 }
 
-@Injectable({ lifeTime: DependencyLifeTime.Singleton })
 export default class LoggerService implements ILoggerService {
     private logFilePath: string;
 

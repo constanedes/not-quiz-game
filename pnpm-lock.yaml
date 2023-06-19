@@ -1,9 +1,6 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  '@miracledevs/paradigm-web-di':
-    specifier: 1.0.3
-    version: 1.0.3
   chalk:
     specifier: 5.2.0
     version: 5.2.0
@@ -42,9 +39,6 @@ devDependencies:
   '@types/node':
     specifier: 20.3.1
     version: 20.3.1
-  '@types/reflect-metadata':
-    specifier: ^0.1.0
-    version: 0.1.0
   nodemon:
     specifier: 2.0.22
     version: 2.0.22
@@ -56,10 +50,6 @@ devDependencies:
     version: 5.1.3
 
 packages:
-
-  /@miracledevs/paradigm-web-di@1.0.3:
-    resolution: {integrity: sha512-iZ2gGwDByWCc+9pFdma2lEWfaZ/xVneAq3ThX1klkk16qo+65AF9VxQ6kNGKqtBxnrQazrNlhpwaamXP7xOgXA==}
-    dev: false
 
   /@rometools/cli-darwin-arm64@12.1.3:
     resolution: {integrity: sha512-AmFTUDYjBuEGQp/Wwps+2cqUr+qhR7gyXAUnkL5psCuNCz3807TrUq/ecOoct5MIavGJTH6R4aaSL6+f+VlBEg==}
@@ -141,13 +131,6 @@ packages:
 
   /@types/node@20.3.1:
     resolution: {integrity: sha512-EhcH/wvidPy1WeML3TtYFGR83UzjxeWRen9V402T8aUGYsCHOmfoisV3ZSg03gAFIbLq8TnWOJ0f4cALtnSEUg==}
-    dev: true
-
-  /@types/reflect-metadata@0.1.0:
-    resolution: {integrity: sha512-bXltFLY3qhzCnVYP5iUpeSICagQ8rc9K2liS+8M0lBcz54BHs3O6W5UvqespVSuebo1BXLi+/y9ioELAW9SC2A==}
-    deprecated: This is a stub types definition for reflect-metadata (https://github.com/rbuckton/ReflectDecorators). reflect-metadata provides its own type definitions, so you don't need @types/reflect-metadata installed!
-    dependencies:
-      reflect-metadata: 0.1.13
     dev: true
 
   /@types/through@0.0.30:
@@ -662,10 +645,6 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
-    dev: true
-
-  /reflect-metadata@0.1.13:
-    resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
     dev: true
 
   /restore-cursor@3.1.0:

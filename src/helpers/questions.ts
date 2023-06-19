@@ -1,4 +1,3 @@
-import { DependencyCollection } from "@miracledevs/paradigm-web-di";
 import IQuestion from "../interfaces/IQuestion.js";
 import FileStorageService from "../services/FileStorageService.js";
 import inquirer from "inquirer";
@@ -6,10 +5,8 @@ import chalk from "chalk";
 import { lives, questionsFilePath } from "../consts.js";
 import { getRandomNumber } from "../utils/others.js";
 
-const container = DependencyCollection.globalCollection.buildContainer();
-
 export default function getQuestions(path: string) {
-    const fileStorageService = container.resolve(FileStorageService);
+    const fileStorageService = new FileStorageService();
     const allQuestionsObject = fileStorageService.readJsonFile(path, true) as IQuestion[];
     return new Map<number, IQuestion>(allQuestionsObject.map((e: IQuestion, index: number) => [index, e]));
 }
