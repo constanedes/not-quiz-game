@@ -6,7 +6,7 @@ import dedent from "../utils/dedent.js";
 import { MenuOption, MenuOptions } from "../types/menu.js";
 
 export function showMenuBanner() {
-    const menuBanner = figlet.textSync("QUIZ-GAME", {
+    const menuBanner = figlet.textSync("!QUIZ-GAME", {
         font: "Larry 3D 2",
         horizontalLayout: "default",
         verticalLayout: "full",

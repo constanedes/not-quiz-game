@@ -1,6 +1,6 @@
-# Quiz Game
+# :grey_exclamation: Quiz Game
 
-A CLI based interactive question and answer game :heavy_exclamation_mark:
+A CLI based interactive question and answer game :sweat_smile:
 
 ## How to play
 

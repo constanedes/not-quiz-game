@@ -15,7 +15,6 @@ enum LogLevel {
 
 @Injectable({ lifeTime: DependencyLifeTime.Singleton })
 export default class LoggerService implements ILoggerService {
-    private static instance: LoggerService;
     private logFilePath: string;
 
     public constructor() {
