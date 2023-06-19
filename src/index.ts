@@ -18,11 +18,9 @@ async function main() {
     console.log(r);
 }
 
-(async () => {
-    try {
-        await main();
-        showCredits();
-    } catch (e) {
-        loggerService.error(e);
-    }
-})();
+try {
+    await main();
+    showCredits();
+} catch (e) {
+    loggerService.error(e);
+}

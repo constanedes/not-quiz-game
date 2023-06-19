@@ -1,6 +1,6 @@
 {
   "name": "quiz-game",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A CLI based interactive question and answer game",
   "keywords": [
     "game",
@@ -12,7 +12,11 @@
     "url": "https://github.com/constanedes/quiz-game.git"
   },
   "license": "MIT",
-  "author": "Constantino Edes <constantinoedes@gmail.com> (constantinoedes.dev)",
+  "author": {
+    "email": "constantinoedes@gmail.com",
+    "name": "Constantino Edes",
+    "url": "https://www.constantinoedes.dev"
+  },
   "type": "module",
   "main": "build/src/index.js",
   "scripts": {

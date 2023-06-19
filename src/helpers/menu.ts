@@ -44,5 +44,5 @@ export function welcome() {
 export function showCredits() {
     console.log(dedent`
         ${chalk.cyanBright("Author: Constantino Edes")}
-        Version: 1.0.0`);
+        Version: 0.1.0`);
 }
