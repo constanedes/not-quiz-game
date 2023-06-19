@@ -2,8 +2,8 @@ import gradient from "gradient-string";
 import figlet from "figlet";
 import inquirer from "inquirer";
 import chalk from "chalk";
-import dedent from "../utils/dedent";
-import { MenuOption, MenuOptions } from "../types/menu";
+import dedent from "../utils/dedent.js";
+import { MenuOption, MenuOptions } from "../types/menu.js";
 
 export function showMenuBanner() {
     const menuBanner = figlet.textSync("QUIZ-GAME", {

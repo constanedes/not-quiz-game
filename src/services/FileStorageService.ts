@@ -1,8 +1,8 @@
 import { DependencyLifeTime, Injectable } from "@miracledevs/paradigm-web-di";
 import fs from "fs";
-import { IFileStorageService } from "../interfaces/IFileStorageService";
+import { IFileStorageService } from "../interfaces/IFileStorageService.js";
 import { JsonObject } from "type-fest";
-import LoggerService from "./LoggerService";
+import LoggerService from "./LoggerService.js";
 
 @Injectable({ lifeTime: DependencyLifeTime.Singleton })
 export default class FileStorageService implements IFileStorageService {

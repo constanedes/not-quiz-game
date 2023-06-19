@@ -1,9 +1,8 @@
 import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
-import ILoggerService from "../interfaces/ILoggerService";
+import ILoggerService from "../interfaces/ILoggerService.js";
 import { DependencyLifeTime, Injectable } from "@miracledevs/paradigm-web-di";
-import FileStorageService from "./FileStorageService";
 
 enum LogLevel {
     Trace = 0,
