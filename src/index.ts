@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { showCredits, showMainMenuOptions, showMenuBanner, welcome } from "./helpers/menu.js";
 import { questionsFilePath } from "./consts.js";
-import LoggerService from "./services/loggerService.js";
+import LoggerService from "./services/LoggerService.js";
 
 const loggerService = new LoggerService();
 

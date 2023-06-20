@@ -1,5 +1,5 @@
 import IQuestion from "../interfaces/IQuestion.js";
-import FileStorageService from "../services/fileStorageService.js";
+import FileStorageService from "../services/FileStorageService.js";
 import inquirer from "inquirer";
 import chalk from "chalk";
 import { lives, questionsFilePath } from "../consts.js";
