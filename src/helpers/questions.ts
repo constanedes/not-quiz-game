@@ -1,9 +1,9 @@
-import IQuestion from "../interfaces/IQuestion.js";
 import FileStorageService from "../services/FileStorageService.js";
 import inquirer from "inquirer";
 import chalk from "chalk";
 import { lives, questionsFilePath } from "../consts.js";
 import { getRandomNumber } from "../utils/others.js";
+import { IQuestion } from "../interfaces/IQuestion.js";
 
 export default function getQuestions(path: string) {
     const fileStorageService = new FileStorageService();

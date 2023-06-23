@@ -1,4 +1,4 @@
-export default interface ILoggerService {
+export interface ILoggerService {
     trace(message: string, optionalParams?: unknown[]): void;
     log(message: string, optionalParams?: unknown[]): void;
     debug(message: string, optionalParams?: unknown[]): void;

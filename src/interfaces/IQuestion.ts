@@ -1,4 +1,4 @@
-export default interface IQuestion {
+export interface IQuestion {
     title: string;
     correct: number;
     options: string[];

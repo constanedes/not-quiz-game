@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { showCredits, showMainMenuOptions, showMenuBanner, welcome } from "./helpers/menu.js";
-import { questionsFilePath } from "./consts.js";
+import { evalOption, showMenuBanner, welcome } from "./helpers/menu.js";
+import { gameOptions, questionsFilePath } from "./consts.js";
 import LoggerService from "./services/LoggerService.js";
 
 const loggerService = new LoggerService();
@@ -14,13 +14,12 @@ async function main() {
     initialDebug();
     welcome();
     showMenuBanner();
-    const r = await showMainMenuOptions();
-    console.log(r);
+    //const r = await showMainMenuOptions();
+    evalOption(gameOptions);
 }
 
 try {
     await main();
-    showCredits();
 } catch (e) {
     loggerService.error(e);
 }

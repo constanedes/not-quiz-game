@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import path from "node:path";
 import chalk from "chalk";
-import ILoggerService from "../interfaces/ILoggerService.js";
+import { ILoggerService } from "../interfaces/ILoggerService.js";
 
 enum LogLevel {
     Trace = 0,
