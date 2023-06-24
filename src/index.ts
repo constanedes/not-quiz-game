@@ -15,7 +15,7 @@ async function main() {
     welcome();
     showMenuBanner();
     //const r = await showMainMenuOptions();
-    evalOption(gameOptions);
+    gameOptions.forEach((x) => evalOption(x));
 }
 
 try {

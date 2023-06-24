@@ -54,18 +54,18 @@ export async function showMainMenuOptions(): Promise<MainMenuOption> {
     return response.opcion as MainMenuOption;
 }
 
-export async function evalOption(menu: MenuItem[], backButton = false): Promise<void> {
+export async function evalOption(menu: MenuItem): Promise<void> {
     const history: MenuItem[] = [];
-    let previousMenu: MenuItem | undefined = undefined;
-    let selectedOption: string | null = null;
+    let previousMenu: MenuItem | undefined;
+    let selectedOption: string | undefined;
 
     while (selectedOption !== MainMenuOption.Exit) {
-        const choices = menu.map((item) => item.name);
-        if (backButton && history.length > 0) {
+        const choices = menu.submenu?.map((item) => item.name);
+        /* if (menu?.back && history.length > 0) {
             previousMenu = history.pop();
             const backOption = `Volver al ${previousMenu?.name}`;
             choices.push(backOption);
-        }
+        } */
         const response = await inquirer.prompt([
             {
                 type: "list",
@@ -77,12 +77,12 @@ export async function evalOption(menu: MenuItem[], backButton = false): Promise<
 
         const selectedOption = response.option;
 
-        const selectedItem = menu.find((item) => item.name === selectedOption);
+        const selectedItem = menu.submenu?.find((item) => item.name === selectedOption);
 
         if (selectedItem?.action) {
             await selectedItem.action();
         } else if (selectedItem?.submenu) {
-            await evalOption(selectedItem.submenu);
+            await evalOption(selectedItem);
         }
     }
 }
