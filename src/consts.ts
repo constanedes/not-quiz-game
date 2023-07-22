@@ -1,8 +1,8 @@
+import { exitGame, showCredits } from "./helpers/menu.js";
+import { MenuItem } from "./interfaces/IMenuItem.js";
+import { MainMenuOption } from "./types/MainMenu.js";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { MainMenuOption } from "./types/MainMenu.js";
-import { MenuItem } from "./interfaces/IMenuItem.js";
-import { exitGame, showCredits } from "./helpers/menu.js";
 
 // global consts
 export const __dirname: string = dirname(fileURLToPath(import.meta.url));

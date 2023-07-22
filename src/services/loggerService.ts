@@ -1,7 +1,7 @@
+import { ILoggerService } from "../interfaces/ILoggerService.js";
+import chalk from "chalk";
 import fs from "fs-extra";
 import path from "node:path";
-import chalk from "chalk";
-import { ILoggerService } from "../interfaces/ILoggerService.js";
 
 enum LogLevel {
     Trace = 0,
@@ -12,6 +12,7 @@ enum LogLevel {
     Error = 5,
 }
 
+// TODO: define if will be used
 export default class LoggerService implements ILoggerService {
     private logFilePath: string;
 

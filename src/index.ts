@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { evalOption, showMenuBanner, welcome } from "./helpers/menu.js";
 import { gameOptions, questionsFilePath } from "./consts.js";
+import { evalOption, showMenuBanner, welcome } from "./helpers/menu.js";
 import LoggerService from "./services/LoggerService.js";
 
 const loggerService = new LoggerService();

@@ -1,11 +1,11 @@
-import gradient from "gradient-string";
-import figlet from "figlet";
-import inquirer from "inquirer";
-import chalk from "chalk";
-import dedent from "../utils/dedent.js";
-import { MainMenuOption } from "../types/MainMenu.js";
-import process from "node:process";
 import { MenuItem } from "../interfaces/IMenuItem.js";
+import { MainMenuOption } from "../types/MainMenu.js";
+import dedent from "../utils/dedent.js";
+import chalk from "chalk";
+import figlet from "figlet";
+import gradient from "gradient-string";
+import inquirer from "inquirer";
+import process from "node:process";
 
 export function showMenuBanner(): void {
     const menuBanner = figlet.textSync("!QUIZ-GAME", {
