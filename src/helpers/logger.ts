@@ -1,24 +1,30 @@
 import chalk from "chalk";
 
-const prefix = () => `[${new Date().toISOString()}]`;
+enum LogLevel {
+    Trace = 0,
+    Log = 1,
+    Debug = 2,
+    Info = 3,
+    Warn = 4,
+    Error = 5,
+}
+
+const prefix = (level: LogLevel) => `[${LogLevel[level].toUpperCase()}] -`;
 
 export const logger = {
     error(...args: unknown[]) {
-        console.error(`${prefix}[ERROR] - ${chalk.red(...args)}`);
+        console.error(chalk.red(prefix(LogLevel.Error)), ...args);
     },
     warn(...args: unknown[]) {
-        console.warn(`${prefix}[WARN] - ${chalk.yellow(...args)}`);
+        console.warn(chalk.yellow(prefix(LogLevel.Warn)), ...args);
     },
     info(...args: unknown[]) {
-        console.info(`${prefix}[INFO] - ${chalk.cyan(...args)}`);
+        console.info(chalk.cyan(prefix(LogLevel.Info)), ...args);
     },
     debug(...args: unknown[]) {
-        console.debug(`${prefix}[DEBUG] - ${chalk.magenta(...args)}`);
+        console.debug(chalk.magenta(prefix(LogLevel.Debug)), ...args);
     },
     trace(...args: unknown[]) {
-        console.trace(`${prefix}[TRACE] - ${chalk.gray(...args)}`);
-    },
-    success(...args: unknown[]) {
-        console.log(`${prefix}[SUCCESS] - ${chalk.red(...args)}`);
+        console.trace(chalk.gray(prefix(LogLevel.Trace)), ...args);
     },
 };

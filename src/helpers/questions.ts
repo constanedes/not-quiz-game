@@ -1,13 +1,12 @@
 import { lives, questionsFilePath } from "../consts.js";
 import { IQuestion } from "../interfaces/IQuestion.js";
-import FileStorageService from "../services/FileStorageService.js";
 import { getRandomNumber } from "../utils/others.js";
 import chalk from "chalk";
+import { readFileSync, readJSON, readJSONSync } from "fs-extra";
 import inquirer from "inquirer";
 
 export default function getQuestions(path: string) {
-    const fileStorageService = new FileStorageService();
-    const allQuestionsObject = fileStorageService.readJsonFile(path, true) as IQuestion[];
+    const allQuestionsObject = readJSONSync(path) as IQuestion[];
     return new Map<number, IQuestion>(allQuestionsObject.map((e: IQuestion, index: number) => [index, e]));
 }
 
