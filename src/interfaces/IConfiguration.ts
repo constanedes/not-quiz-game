@@ -8,4 +8,4 @@ export interface IConfiguration {
     questionsType: QuestionType;
 }
 
-// TODO: for view all topics check https://opentdb.com/api_category.php
+// For view all topics check https://opentdb.com/api_category.php
