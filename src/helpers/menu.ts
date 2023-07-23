@@ -1,14 +1,13 @@
-import { MenuItem } from "../interfaces/IMenuItem.js";
+import { IMenuItem } from "../interfaces/IMenuItem.js";
 import { MainMenuOption } from "../types/MainMenu.js";
-import dedent from "../utils/dedent.js";
-import chalk from "chalk";
 import figlet from "figlet";
 import gradient from "gradient-string";
 import inquirer from "inquirer";
 import process from "node:process";
+import { bannerText, creditsText, welcomeText } from "../consts.js";
 
 export function showMenuBanner(): void {
-    const menuBanner = figlet.textSync("!QUIZ-GAME", {
+    const menuBanner = figlet.textSync(bannerText, {
         font: "Larry 3D 2",
         horizontalLayout: "default",
         verticalLayout: "full",
@@ -20,69 +19,30 @@ export function showMenuBanner(): void {
 }
 
 export function welcome() {
-    console.log(dedent`
-		${chalk.bgBlack.underline.whiteBright("HOW TO PLAY")} 
-		I am a process on your computer.
-		If you loose your 3 lives, I will be ${chalk.red("killed")}!
-		So get all the questions right...
-	`);
+    console.log(welcomeText);
 }
 
 export function showCredits() {
-    console.log(dedent`
-        ${chalk.cyanBright("Author: Constantino Edes")}
-        Version: 0.1.5`);
+    console.log(creditsText);
 }
 
 export function exitGame(): void {
-    console.log(dedent`${chalk.gray("See you soon!")} 👋
-        Exiting game...
-    `);
+    console.log();
     process.exit(0);
 }
 
-export async function showMainMenuOptions(): Promise<MainMenuOption> {
+export async function executeMainMenuOption(menu: IMenuItem[]): Promise<IMenuItem | undefined> {
     const options = Object.values(MainMenuOption);
     const response = await inquirer.prompt([
         {
             type: "list",
-            name: "opcion",
+            name: "option",
             message: "¿Ready?",
             choices: options,
         },
     ]);
-    return response.opcion as MainMenuOption;
-}
 
-export async function evalOption(menu: MenuItem): Promise<void> {
-    const history: MenuItem[] = [];
-    let previousMenu: MenuItem | undefined;
-    let selectedOption: string | undefined;
-
-    while (selectedOption !== MainMenuOption.Exit) {
-        const choices = menu.submenu?.map((item) => item.name);
-        /* if (menu?.back && history.length > 0) {
-            previousMenu = history.pop();
-            const backOption = `Volver al ${previousMenu?.name}`;
-            choices.push(backOption);
-        } */
-        const response = await inquirer.prompt([
-            {
-                type: "list",
-                name: "option",
-                message: "Select an option:",
-                choices,
-            },
-        ]);
-
-        const selectedOption = response.option;
-
-        const selectedItem = menu.submenu?.find((item) => item.name === selectedOption);
-
-        if (selectedItem?.action) {
-            await selectedItem.action();
-        } else if (selectedItem?.submenu) {
-            await evalOption(selectedItem);
-        }
-    }
+    const selectedItem = menu.find((item) => item.name === response.option);
+    if (selectedItem?.action) await selectedItem.action();
+    return selectedItem;
 }

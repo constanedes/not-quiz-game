@@ -1,8 +1,6 @@
-import { lives, questionsFilePath } from "../consts.js";
 import { IQuestion } from "../interfaces/IQuestion.js";
-import { getRandomNumber } from "../utils/others.js";
 import chalk from "chalk";
-import { readFileSync, readJSON, readJSONSync } from "fs-extra";
+import { readJSONSync } from "fs-extra";
 import inquirer from "inquirer";
 
 export default function getQuestions(path: string) {
@@ -10,14 +8,11 @@ export default function getQuestions(path: string) {
     return new Map<number, IQuestion>(allQuestionsObject.map((e: IQuestion, index: number) => [index, e]));
 }
 
-async function getRandomQuestion(): Promise<IQuestion | undefined> {
-    if (lives === 0) {
-        process.exit(1);
-    }
+/* async function getRandomQuestion(): Promise<IQuestion | undefined> {
     const data = getQuestions(questionsFilePath);
     const randomIndex = getRandomNumber(0, data.size);
     return data.get(randomIndex);
-}
+} */
 
 async function viewNextQuestionOptions(question: IQuestion) {
     const propmts = [
@@ -25,7 +20,7 @@ async function viewNextQuestionOptions(question: IQuestion) {
             type: "list",
             name: question.title,
             message: "Your answer",
-            choices: question.options,
+            choices: question.incorrects,
             prefix: `${chalk.magenta("-")}`,
             suffix: `:${chalk.magenta(" -")}${chalk.greenBright(" You got options, choose wisely!")}`,
         },
@@ -41,15 +36,17 @@ async function viewNextQuestionOptions(question: IQuestion) {
         });
 }
 
-async function handleAnswer(question: IQuestion, userAnswer: string) {
-    /*  const spinner = ora({
+function handleAnswer(question: IQuestion, arg1: unknown) {
+    throw new Error("Function not implemented.");
+}
+/* async function handleAnswer(question: IQuestion, userAnswer: string) {
+     const spinner = ora({
         color: "green",
         text: "Checking answer",
     }).start();
-    */
-    /* spinner.stop(); */
-
-    if (question["options"][question.correct] === userAnswer) {
+    
+     spinner.stop(); */
+/* if (question["options"][question.correct] === userAnswer) {
         //spinner.succeed("Correct");
         console.log("correct");
         console.log(userAnswer);
@@ -58,5 +55,4 @@ async function handleAnswer(question: IQuestion, userAnswer: string) {
     } else {
         //spinner.fail("Incorrect...");
         process.exit(1);
-    }
-}
+    }  */

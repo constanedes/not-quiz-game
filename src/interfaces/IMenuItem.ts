@@ -1,6 +1,4 @@
-export interface MenuItem {
+export interface IMenuItem {
     name: string;
     action?: () => Promise<void>;
-    submenu?: MenuItem[];
-    back?: boolean;
 }

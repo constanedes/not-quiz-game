@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-import { gameOptions, questionsFilePath } from "./consts.js";
+import { gameOptions } from "./consts.js";
 import { logger } from "./helpers/logger.js";
-import { evalOption, showMenuBanner, welcome } from "./helpers/menu.js";
+import { executeMainMenuOption, showMenuBanner, welcome } from "./helpers/menu.js";
+import { getApiData } from "./utils.js";
 
 function initialDebug() {
-    logger.debug(questionsFilePath);
     logger.info("App running");
 }
 
@@ -12,9 +12,16 @@ async function main() {
     initialDebug();
     welcome();
     showMenuBanner();
+    await executeMainMenuOption(gameOptions);
 
-    //const r = await showMainMenuOptions();
-    //gameOptions.forEach((x) => evalOption(x));
+    /* const data = await getApiData("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple", {
+        amount: 10,
+        category: 18,
+        difficulty: "easy",
+        type: "multiple",
+    });
+    console.log(data)
+    */
 }
 
 try {

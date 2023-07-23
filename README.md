@@ -8,9 +8,15 @@ npm: `npx not-quiz-game` \
 pnpm: `pnpm dlx not-quiz-game` \
 yarn: `yarn dlx not-quiz-game`
 
-## Instructions
+<!-- ## Packages Used
 
-Coming soon
+- [chalk](https://github.com/chalk/chalk)
+- [figlet](https://github.com/patorjk/figlet.js)
+- [inquirer](https://github.com/SBoudrias/Inquirer.js)
+
+## Questions
+
+All the questions are fetched from [Open Trivia Database](https://opentdb.com/). -->
 
 ### Build and run the project
 
@@ -20,4 +26,8 @@ In the root of the proyect run `pnpm i` in your terminal for install the depende
 You have 3 options for build and run the proyect
 
 - Transpiled version (recommended): `pnpm run build` and `pnpm run start`
-- Execute with dev mode: `pnpm run build:watch` and `pnpm run dev` (in other terminal)
+- Execute with dev mode: `pnpm run build:watch` and `pnpm run dev` (in other terminal)****
+
+### Special thanks to Fireship
+
+This game is based on the [JavaScript Millionaire CLI Tool](https://github.com/fireship-io/javascript-millionaire) tutorial. Check [Fireship](https://github.com/fireship-io) repository for more cool things.

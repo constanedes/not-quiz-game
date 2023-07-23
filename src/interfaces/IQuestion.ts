@@ -1,5 +1,10 @@
+import { GameDificulty, IntRange, QuestionType } from "../types/Configuration.js";
+
 export interface IQuestion {
+    category: string;
+    type: QuestionType;
+    dificulty: GameDificulty;
     title: string;
-    correct: number;
-    options: string[];
+    correct: string;
+    incorrects: string[];
 }

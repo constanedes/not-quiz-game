@@ -1,6 +1,5 @@
 export enum MainMenuOption {
     Play = "Play",
-    Options = "Options",
     Credits = "Credits",
     Exit = "Exit Game",
 }
