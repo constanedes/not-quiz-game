@@ -14,14 +14,13 @@ async function main() {
     showMenuBanner();
     await executeMainMenuOption(gameOptions);
 
-    /* const data = await getApiData("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple", {
+    const data = await getApiData("https://opentdb.com/api.php", {
         amount: 10,
         category: 18,
         difficulty: "easy",
         type: "multiple",
     });
-    console.log(data)
-    */
+    console.log(data);
 }
 
 try {
