@@ -1,4 +1,4 @@
-import { GameDificulty, IntRange, QuestionType } from "../types/Configuration.js";
+import { GameDificulty, QuestionType } from "../types/Configuration.js";
 
 export interface IQuestion {
     category: string;

@@ -1,6 +1,5 @@
 import { logger } from "./logger.js";
 import fs from "node:fs";
-import { JsonObject } from "type-fest";
 
 export function readJsonFile(filePath: string, parse: boolean): string | unknown {
     try {
@@ -29,11 +28,11 @@ export function checkFileExists(filepath: string): boolean {
     }
 }
 
-export function addObjectToJson(filePath: string, jsonData: JsonObject): void {
+/* export function addObjectToJson(filePath: string, jsonData: JsonObject): void {
     try {
         const jsonObject = JSON.stringify(jsonData, null, 4);
         fs.appendFileSync(filePath, jsonObject, "utf-8");
     } catch (err) {
         logger.error(`Cannot append JSON object to file: ${err}`);
     }
-}
+} */

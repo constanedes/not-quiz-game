@@ -4,10 +4,10 @@ import figlet from "figlet";
 import gradient from "gradient-string";
 import inquirer from "inquirer";
 import process from "node:process";
-import { bannerText, creditsText, welcomeText } from "../consts.js";
+import { BANNER_TEXT, CREDITS_TEXT, EXIT_TEXT, WELCOME_TEXT } from "../consts.js";
 
 export function showMenuBanner(): void {
-    const menuBanner = figlet.textSync(bannerText, {
+    const menuBanner = figlet.textSync(BANNER_TEXT, {
         font: "Larry 3D 2",
         horizontalLayout: "default",
         verticalLayout: "full",
@@ -19,15 +19,15 @@ export function showMenuBanner(): void {
 }
 
 export function welcome() {
-    console.log(welcomeText);
+    console.log(WELCOME_TEXT);
 }
 
 export function showCredits() {
-    console.log(creditsText);
+    console.log(CREDITS_TEXT);
 }
 
 export function exitGame(): void {
-    console.log();
+    console.log(EXIT_TEXT);
     process.exit(0);
 }
 
@@ -45,4 +45,8 @@ export async function executeMainMenuOption(menu: IMenuItem[]): Promise<IMenuIte
     const selectedItem = menu.find((item) => item.name === response.option);
     if (selectedItem?.action) await selectedItem.action();
     return selectedItem;
+}
+
+export async function playGame(): Promise<void> {
+    console.log();
 }

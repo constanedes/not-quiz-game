@@ -1,47 +1,47 @@
 import chalk from "chalk";
-import { exitGame, showCredits } from "./helpers/menu.js";
+import { executeMainMenuOption, exitGame, playGame, showCredits } from "./helpers/menu.js";
 import { IMenuItem } from "./interfaces/IMenuItem.js";
 import { MainMenuOption } from "./types/MainMenu.js";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
 import dedent from "./utils.js";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-export const bannerText = "!QUIZ-GAME";
-
-export const welcomeText = dedent`
+export const GAME_NAME = "not-quiz-game";
+export const BANNER_TEXT = "!QUIZ-GAME";
+export const WELCOME_TEXT = dedent`
 ${chalk.bgBlack.underline.whiteBright("HOW TO PLAY")} 
 I am a process on your computer.
 If you loose your 3 lives, I will be ${chalk.red("killed")}!
 So get all the questions right...
 `;
-
-export const gameOverText = "Game over, try again :/";
-export const winText = "You win the game! Contrats!!";
-export const creditsText = dedent`
+export const LOSE_TEXT = "Game over, try again :/";
+export const WIN_TEXT = "You win the game! Contrats!!";
+export const CREDITS_TEXT = dedent`
 ${chalk.cyanBright("Author: Constantino Edes")}
 Version: 0.1.5`;
-export const exitText = dedent`
+export const EXIT_TEXT = dedent`
 ${chalk.gray("See you soon!")} 👋
 Exiting game...
 `;
 
-/* export const __dirname: string = dirname(fileURLToPath(import.meta.url));
-export const questionsFilePath: string = join(__dirname, "questions.json"); */
+const __filename = fileURLToPath(import.meta.url);
+const distPath = path.dirname(__filename);
+export const PKG_ROOT = path.join(distPath, "../");
 
 export const gameOptions: IMenuItem[] = [
     {
         name: MainMenuOption.Play,
-        action: async () => showCredits(),
+        action: async () => playGame(),
     },
     {
         name: MainMenuOption.Credits,
         action: async () => {
-            console.log("Mostrando los créditos del juego");
-            // Lógica para mostrar los créditos del juego
+            showCredits();
+            await executeMainMenuOption(gameOptions);
         },
     },
     {
         name: MainMenuOption.Exit,
-        action: async () => showCredits(),
+        action: async () => exitGame(),
     },
 ];

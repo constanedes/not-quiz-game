@@ -1,14 +1,36 @@
 import { setTimeout } from "timers/promises";
 import { logger } from "./helpers/logger.js";
+import { type PackageJson } from "type-fest";
+import path from "node:path";
+import fs from "node:fs";
+import { PKG_ROOT } from "./consts.js";
 
+/**
+ * Sleep X miliseconds
+ * @param time miliseconds to sleep
+ */
 export async function sleep(time: number): Promise<void> {
     await setTimeout(time);
 }
 
-export function getRandomNumber(min: number, max: number) {
+/**
+ * Detect is the app is running under debug mode
+ * @returns boolean
+ */
+export function isDebugging(): boolean {
+    return process.env.NODE_ENV !== "production";
+}
+
+/**
+ * Gets random number (limits included)
+ */
+export function getRandomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+/**
+ * Removes template string indentation.
+ */
 export default function dedent(
     callSite: TemplateStringsArray,
     ...args: unknown[]
@@ -29,6 +51,12 @@ export default function dedent(
     return format(output);
 }
 
+/**
+ * Fetchs data from API.
+ * @param path The page/server URL.
+ * @param query Object for build the query string.
+ * @param options Request options.
+ */
 export async function getApiData(path: string, query?: { [key: string]: string | number }, options: RequestInit = {}) {
     try {
         let queryString = "";
@@ -52,4 +80,12 @@ export async function getApiData(path: string, query?: { [key: string]: string |
     } catch (error) {
         logger.error("Cannot obtain API data", error);
     }
+}
+/**
+ * Gets the version from package.json
+ */
+export function getVersion(): string {
+    const packageJsonPath = path.join(PKG_ROOT, "package.json");
+    const packageJsonContent = JSON.parse(fs.readFileSync(packageJsonPath).toString()) as PackageJson;
+    return packageJsonContent.version ?? "1.0.0";
 }

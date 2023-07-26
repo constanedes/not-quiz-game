@@ -8,15 +8,9 @@ npm: `npx not-quiz-game` \
 pnpm: `pnpm dlx not-quiz-game` \
 yarn: `yarn dlx not-quiz-game`
 
-<!-- ## Packages Used
-
-- [chalk](https://github.com/chalk/chalk)
-- [figlet](https://github.com/patorjk/figlet.js)
-- [inquirer](https://github.com/SBoudrias/Inquirer.js)
-
 ## Questions
 
-All the questions are fetched from [Open Trivia Database](https://opentdb.com/). -->
+All the questions are fetched from [Open Trivia Database](https://opentdb.com/).
 
 ### Build and run the project
 

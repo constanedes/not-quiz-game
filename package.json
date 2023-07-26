@@ -36,16 +36,18 @@
   },
   "dependencies": {
     "chalk": "5.2.0",
-    "chalk-animation": "^2.0.3",
+    "chalk-animation": "2.0.3",
+    "commander": "11.0.0",
     "figlet": "1.6.0",
     "gradient-string": "2.0.2",
-    "html-entities": "^2.4.0",
+    "html-entities": "2.4.0",
     "inquirer": "9.2.7",
-    "node-emoji": "^2.1.0",
+    "node-emoji": "2.1.0",
     "ora": "6.3.1",
-    "type-fest": "3.12.0"
+    "type-fest": "4.0.0"
   },
   "devDependencies": {
+    "@commander-js/extra-typings": "11.0.0",
     "@types/figlet": "1.5.6",
     "@types/fs-extra": "11.0.1",
     "@types/gradient-string": "1.1.2",
