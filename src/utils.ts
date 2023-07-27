@@ -52,10 +52,7 @@ export function getRandomNumber(min: number, max: number): number {
 /**
  * Removes template string indentation.
  */
-export default function dedent(
-    callSite: TemplateStringsArray,
-    ...args: unknown[]
-): string | ((...args: unknown[]) => string) {
+export default function dedent(callSite: TemplateStringsArray, ...args: unknown[]) {
     function format(str: string): string {
         let size = -1;
         return str.replace(/\n(\s+)/g, (m: string, m1: string) => {

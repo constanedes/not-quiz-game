@@ -3,7 +3,8 @@ import { MenuOption } from "../types/Menu.js";
 import figlet from "figlet";
 import gradient from "gradient-string";
 import inquirer from "inquirer";
-import process from "node:process";
+import process, { emit } from "node:process";
+import * as emoji from "node-emoji";
 import { BANNER_TEXT, CREDITS_TEXT, EXIT_TEXT, WELCOME_TEXT, defaultConfig } from "../consts.js";
 import { askQuestion, getQuestions } from "./questions.js";
 import { IConfiguration } from "../interfaces/IConfiguration.js";
@@ -55,5 +56,9 @@ export async function playGame(config: IConfiguration): Promise<void> {
     const allQuestionsMap = await getQuestions(config);
     // rome-ignore lint/style/useConst: <explanation>
     let corrects = 0;
-    console.log(await askQuestion(allQuestionsMap));
+    let lives = new Array().fill(emoji.get(":heart:"));
+
+    while (corrects !== config.questions || lives.length !== 0) {
+        console.log(await askQuestion(allQuestionsMap));
+    }
 }
