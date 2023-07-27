@@ -1,10 +1,10 @@
-import { GameDificulty, QuestionType } from "../types/Configuration.js";
+import { GameDifficulty, GameMode } from "../types/Configuration.js";
 
 export interface IQuestion {
     category: string;
-    type: QuestionType;
-    dificulty: GameDificulty;
-    title: string;
-    correct: string;
-    incorrects: string[];
+    type: GameMode;
+    difficulty: GameDifficulty;
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string[];
 }

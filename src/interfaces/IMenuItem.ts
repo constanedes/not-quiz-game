@@ -1,4 +1,4 @@
 export interface IMenuItem {
-    readonly name: string;
-    readonly action?: () => Promise<void>;
+    name: string;
+    action?: () => Promise<void>;
 }

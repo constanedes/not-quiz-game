@@ -4,13 +4,34 @@ import { type PackageJson } from "type-fest";
 import path from "node:path";
 import fs from "node:fs";
 import { PKG_ROOT } from "./consts.js";
-
 /**
  * Sleep X miliseconds
  * @param time miliseconds to sleep
  */
 export async function sleep(time: number): Promise<void> {
     await setTimeout(time);
+}
+
+export function readJsonFile(filePath: string, parse: boolean): string | unknown {
+    try {
+        const fileContent = fs.readFileSync(filePath, "utf-8");
+        if (parse) return JSON.parse(fileContent);
+        return fileContent;
+    } catch (err) {
+        logger.error(`Cannot read file: ${err}`);
+    }
+}
+
+export function shuffleArray<T>(array: T[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array as T[];
+}
+
+export function clamp(value: number, min: number, max: number): number {
+    return Math.min(Math.max(value, min), max);
 }
 
 /**
