@@ -4,9 +4,11 @@ import figlet from "figlet";
 import gradient from "gradient-string";
 import inquirer from "inquirer";
 import process from "node:process";
-import { BANNER_TEXT, CREDITS_TEXT, EXIT_TEXT, WELCOME_TEXT, defaultConfig } from "../consts.js";
+import { BANNER_TEXT, CREDITS_TEXT, EXIT_TEXT, WELCOME_TEXT } from "../consts.js";
 import { askQuestion, getQuestions } from "./questions.js";
 import { IConfiguration } from "../interfaces/IConfiguration.js";
+import ora from "ora";
+import { logger } from "./logger.js";
 
 export function showMenuBanner(): void {
     const menuBanner = figlet.textSync(BANNER_TEXT, {
@@ -55,5 +57,16 @@ export async function playGame(config: IConfiguration): Promise<void> {
     const allQuestionsMap = await getQuestions(config);
     // rome-ignore lint/style/useConst: <explanation>
     let corrects = 0;
-    console.log(await askQuestion(allQuestionsMap));
+    const isCorrect = await askQuestion(allQuestionsMap);
+    logger.debug(isCorrect);
+    const spinner = ora({
+        color: "green",
+        text: "Checking answer",
+    }).start();
+
+    if (isCorrect) {
+        spinner.succeed("correect");
+    } else {
+        spinner.fail("incorrect");
+    }
 }
