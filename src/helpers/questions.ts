@@ -65,8 +65,6 @@ export async function askQuestion(questions: Map<number, IQuestion>) {
         choices: shuffleArray(question.options),
     });
 
-    //questions.delete(question.index);
-    console.log(questions);
     return answers[question.name] === decode(question.answer);
 }
 

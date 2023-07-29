@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
   chalk:
@@ -34,7 +38,7 @@ dependencies:
 
 devDependencies:
   '@commander-js/extra-typings':
-    specifier: ^11.0.0
+    specifier: 11.0.0
     version: 11.0.0(commander@11.0.0)
   '@types/figlet':
     specifier: 1.5.6
