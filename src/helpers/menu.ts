@@ -4,12 +4,12 @@ import figlet from "figlet";
 import gradient from "gradient-string";
 import inquirer from "inquirer";
 import process from "node:process";
-import { BANNER_TEXT } from "../consts.js";
+import { BANNER_TEXT, GAME_NAME } from "../consts.js";
 import { askQuestion, createQuestion, getQuestions } from "./questions.js";
 import { IConfiguration } from "../interfaces/IConfiguration.js";
 import ora from "ora";
 import { decode } from "html-entities";
-import { dedent, getVersion, sleep } from "../utils.js";
+import { clamp, dedent, getVersion, sleep } from "../utils.js";
 import chalk from "chalk";
 import { logger } from "./logger.js";
 
@@ -32,8 +32,11 @@ export function showMenuBanner(): void {
 
 export function showCredits(): void {
     console.log(dedent`
-    ${chalk.cyanBright("Author: Constantino Edes")}
-    Version: ${getVersion()}`);
+        ${chalk.cyanBright("Author: Constantino Edes")}
+        Version: ${getVersion()}
+        Thank you for playing!
+        ${GAME_NAME} © 2023
+    `);
 }
 
 export function exitGame(): void {
@@ -42,15 +45,14 @@ export function exitGame(): void {
 }
 
 async function winGame(playerName: string) {
-    console.log(playerName);
-    console.log("win");
+    console.log(dedent`Congratulations ${playerName} on your remarkable victory in the game!`);
     // TODO: Implement a countdown function to show the credits
-    await sleep(2000);
+    await sleep(1500);
     showCredits();
 }
 
-function looseGame() {
-    console.log("you loose try again");
+function looseGame(playerName: string) {
+    console.log(`Game Over ${playerName}, try again :(`);
     process.exit(0);
 }
 
@@ -77,10 +79,10 @@ export async function playGame(config: IConfiguration, playerName: string): Prom
         color: "cyan",
         text: "Obtaining questions\n",
     }).start();
-    const allQuestionsMap = await getQuestions(config);
 
+    const allQuestionsMap = await getQuestions(config);
     let corrects = 0;
-    const lives = [1, 2, 3];
+    const lives = new Array(clamp(config.lives, 1, 10)).fill(0);
     loadingSpinner.stop();
 
     while (true) {
@@ -89,13 +91,15 @@ export async function playGame(config: IConfiguration, playerName: string): Prom
                 winGame(playerName);
             }
             if (lives.length === 0) {
-                looseGame();
+                looseGame(playerName);
             }
             break;
         }
+
         if (!allQuestionsMap) return;
         const questionToAsk = createQuestion(allQuestionsMap);
         const userAnswer = await askQuestion(questionToAsk);
+
         const spinner = ora({
             color: "white",
             text: "Checking answer",
@@ -110,8 +114,8 @@ export async function playGame(config: IConfiguration, playerName: string): Prom
             lives.pop();
             continue;
         }
-        logger.debug(allQuestionsMap);
+
         allQuestionsMap.delete(allQuestionsMap.size - 1);
-        spinner.info(`You got ${lives.length} lives, and ${allQuestionsMap.size} questions`);
+        spinner.info(`You got ${lives.length} lives, and ${allQuestionsMap.size} questions\n`);
     }
 }

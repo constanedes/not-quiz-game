@@ -27,7 +27,7 @@ export async function askName(): Promise<string> {
 export async function getQuestions(config: IConfiguration) {
     try {
         const extractedQuestions = await getApiData("https://opentdb.com/api.php", {
-            amount: clamp(config.questions, 3, 20) ?? defaultConfig.questions,
+            amount: config.questions ?? defaultConfig.questions,
             category: clamp(config.topic, 9, 32) ?? defaultConfig.topic,
             difficulty: config.difficulty ?? defaultConfig.difficulty,
             type: config.mode ?? defaultConfig.mode,
