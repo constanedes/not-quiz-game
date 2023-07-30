@@ -5,6 +5,7 @@ import { clamp, getApiData, shuffleArray } from "../utils.js";
 import { IConfiguration } from "../interfaces/IConfiguration.js";
 import { defaultConfig } from "../consts.js";
 import { logger } from "./logger.js";
+import chalk from "chalk";
 
 export async function askName(): Promise<string> {
     const answers = await inquirer.prompt({
@@ -59,50 +60,8 @@ export async function askQuestion(question: IParsedQuestion) {
         type: "list",
         message: decode(question.question),
         choices: shuffleArray(question.options),
+        suffix: `${chalk.magenta(" -")}${chalk.greenBright(" You got options, choose wisely!")}`,
     });
 
     return answers[question.name];
 }
-
-/* async function viewNextQuestionOptions(question: IQuestion) {
-    const propmts = [
-        {
-            type: "list",
-            name: question.title,
-            message: "Your answer",
-            choices: question.incorrects,
-            prefix: `${chalk.magenta("-")}`,
-            suffix: `:${chalk.magenta(" -")}${chalk.greenBright(" You got options, choose wisely!")}`,
-        },
-    ];
-
-    inquirer
-        .prompt(propmts)
-        .then((answer) => {
-            handleAnswer(question, answer[question.title]); // answer[question.title]
-        })
-        .catch((err) => {
-            console.error(err);
-        });
-}
-*/
-
-/* async function handleAnswer(isCorrect: boolean) {
-    const spinner = ora({
-        color: "green",
-        text: "Checking answer",
-    }).start();
-
-    spinner.stop();
-    if (question["options"][question.correct] === userAnswer) {
-        //spinner.succeed("Correct");
-        console.log("correct");
-        console.log(userAnswer);
-
-        //spinner.info(`You got ${lives} lives, and ${} of ${} questions`)
-    } else {
-        //spinner.fail("Incorrect...");
-        process.exit(1);
-    }
-} 
-*/

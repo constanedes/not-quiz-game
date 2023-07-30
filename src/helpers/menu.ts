@@ -11,7 +11,6 @@ import ora from "ora";
 import { decode } from "html-entities";
 import { clamp, dedent, getVersion, sleep } from "../utils.js";
 import chalk from "chalk";
-import { logger } from "./logger.js";
 
 export function showMenuBanner(): void {
     console.log(dedent`
@@ -40,7 +39,7 @@ export function showCredits(): void {
 }
 
 export function exitGame(): void {
-    console.log();
+    console.log("See you soon");
     process.exit(0);
 }
 
@@ -49,11 +48,12 @@ async function winGame(playerName: string) {
     // TODO: Implement a countdown function to show the credits
     await sleep(1500);
     showCredits();
+    exitGame();
 }
 
 function looseGame(playerName: string) {
     console.log(`Game Over ${playerName}, try again :(`);
-    process.exit(0);
+    exitGame();
 }
 
 export async function executeMainMenuOption(menu: IMenuItem[]): Promise<IMenuItem | undefined> {
