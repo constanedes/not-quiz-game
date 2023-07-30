@@ -1,7 +1,6 @@
-import { IQuestion } from "../interfaces/IQuestion.js";
+import { IParsedQuestion, IQuestion } from "../interfaces/IQuestion.js";
 import { decode } from "html-entities";
 import inquirer from "inquirer";
-import ora from "ora";
 import { clamp, getApiData, shuffleArray } from "../utils.js";
 import { IConfiguration } from "../interfaces/IConfiguration.js";
 import { defaultConfig } from "../consts.js";
@@ -25,39 +24,36 @@ export async function askName(): Promise<string> {
     return answers.player_name;
 }
 
-export async function getQuestions(config: IConfiguration): Promise<Map<number, IQuestion>> {
+export async function getQuestions(config: IConfiguration) {
     try {
         const extractedQuestions = await getApiData("https://opentdb.com/api.php", {
-            amount: config.questions ?? defaultConfig.questions,
+            amount: clamp(config.questions, 3, 20) ?? defaultConfig.questions,
             category: clamp(config.topic, 9, 32) ?? defaultConfig.topic,
             difficulty: config.difficulty ?? defaultConfig.difficulty,
             type: config.mode ?? defaultConfig.mode,
         });
 
-        return new Map<number, IQuestion>(
+        const map = new Map<number, IQuestion>(
             shuffleArray<IQuestion>(extractedQuestions.results).map((e: IQuestion, index: number) => [index, e])
         );
+
+        if (!map || map.size === 0) throw new Error();
+        return map;
     } catch (error) {
-        logger.error(error);
-        return new Map();
+        logger.error("Cant fetch the questions, check your game config parameters and try again.", error);
     }
 }
 
-function createQuestion(questions: Map<number, IQuestion>) {
-    const questionIndex = Math.floor(Math.random() * questions.size);
-    const question = questions.get(questionIndex);
+export function createQuestion(questions: Map<number, IQuestion>): IParsedQuestion {
+    // rome-ignore lint/style/noNonNullAssertion: <explanation>
+    const question = questions.get(questions.size - 1)!;
 
-    if (question) {
-        const name = `${question.category[0].toLowerCase()}${question.difficulty[0]}${questionIndex}`;
-        const options = [...question.incorrect_answers.map((q: string) => decode(q)), decode(question.correct_answer)];
-        return { name, question: question.question, options, answer: question.correct_answer, index: questionIndex };
-    } else {
-        throw new Error("Cant build the question");
-    }
+    const name = `${question.category[0].toLowerCase()}${question.difficulty[0]}`;
+    const options = [...question.incorrect_answers.map((q: string) => decode(q)), decode(question.correct_answer)];
+    return { name, question: question.question, options, answer: question.correct_answer };
 }
 
-export async function askQuestion(questions: Map<number, IQuestion>) {
-    const question = createQuestion(questions);
+export async function askQuestion(question: IParsedQuestion) {
     const answers = await inquirer.prompt({
         name: question.name,
         type: "list",
@@ -65,7 +61,7 @@ export async function askQuestion(questions: Map<number, IQuestion>) {
         choices: shuffleArray(question.options),
     });
 
-    return answers[question.name] === decode(question.answer);
+    return answers[question.name];
 }
 
 /* async function viewNextQuestionOptions(question: IQuestion) {
@@ -89,7 +85,7 @@ export async function askQuestion(questions: Map<number, IQuestion>) {
             console.error(err);
         });
 }
- */
+*/
 
 /* async function handleAnswer(isCorrect: boolean) {
     const spinner = ora({
@@ -108,35 +104,5 @@ export async function askQuestion(questions: Map<number, IQuestion>) {
         //spinner.fail("Incorrect...");
         process.exit(1);
     }
-} */
-
-/* const handleAnswer = async (isCorrect) => {
-    const spinner = createSpinner("Checking answer...").start();
-    await sleep(100);
-
-    if (isCorrect) {
-        correctAnswers++;
-        if (correctAnswers % gameConfig.extraLifeOn === 0) {
-            lives++;
-            spinner.success({
-                text: `Great work. That gave me another life. ${getLives(lives)}`,
-            });
-        } else {
-            spinner.success({ text: `Well done. That's the correct answer` });
-        }
-    } else {
-        lives--;
-        if (lives === 0) {
-            spinner.error({
-                text: `${getMurderWeapon()} Game over, thanks for nothing! 💀💀💀`,
-            });
-            process.exit(0);
-        }
-        spinner.error({
-            text: `Wow that was close! Please do better next question! They attempt to kill me with a ${getMurderWeapon()}. I only have ${getLives(
-                lives
-            )}`,
-        });
-    }
-};
- */
+} 
+*/

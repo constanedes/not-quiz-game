@@ -49,10 +49,25 @@ export function getRandomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+export async function countdown(seconds: number) {
+    console.clear();
+
+    function wait(ms: number): Promise<void> {
+        return new Promise((resolve) => setTimeout(ms, resolve));
+    }
+
+    for (let currentSeconds = seconds; currentSeconds > 0; currentSeconds--) {
+        console.log(currentSeconds);
+        await wait(1000);
+    }
+
+    console.log("Countdown finished!");
+}
+
 /**
  * Removes template string indentation.
  */
-export default function dedent(callSite: TemplateStringsArray, ...args: unknown[]) {
+export function dedent(callSite: TemplateStringsArray, ...args: unknown[]) {
     function format(str: string): string {
         let size = -1;
         return str.replace(/\n(\s+)/g, (m: string, m1: string) => {

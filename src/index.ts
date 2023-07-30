@@ -2,7 +2,7 @@
 import { Command, Option } from "@commander-js/extra-typings";
 import { defaultConfig, gameOptions } from "./consts.js";
 import { logger } from "./helpers/logger.js";
-import { executeMainMenuOption, showMenuBanner, welcome } from "./helpers/menu.js";
+import { executeMainMenuOption, showMenuBanner } from "./helpers/menu.js";
 import { getVersion, isDebugging } from "./utils.js";
 import { IConfiguration } from "./interfaces/IConfiguration.js";
 
@@ -36,7 +36,6 @@ const cli: IConfiguration = program.opts();
 export const config: IConfiguration = { ...defaultConfig, ...cli };
 
 async function main() {
-    welcome();
     showMenuBanner();
     await executeMainMenuOption(gameOptions);
 }
