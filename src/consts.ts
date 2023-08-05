@@ -12,10 +12,10 @@ const __filename = fileURLToPath(import.meta.url);
 const distPath = path.dirname(__filename);
 export const PKG_ROOT = path.join(distPath, "..", "..");
 
+// TODO: Optional, make consts for other texts in the app
+
 export const GAME_NAME = "not-quiz-game";
 export const BANNER_TEXT = "!QUIZ-GAME";
-
-// TODO: Optional, make consts for other texts in the app
 
 export const gameOptions: IMenuItem[] = [
     {
