@@ -1,9 +1,9 @@
-import { setTimeout } from "timers/promises";
-import { logger } from "./helpers/logger.js";
-import { type PackageJson } from "type-fest";
-import path from "node:path";
-import fs from "node:fs";
 import { PKG_ROOT } from "./consts.js";
+import { logger } from "./helpers/logger.js";
+import fs from "node:fs";
+import path from "node:path";
+import { setTimeout } from "timers/promises";
+import { type PackageJson } from "type-fest";
 /**
  * Sleep X miliseconds
  * @param time miliseconds to sleep

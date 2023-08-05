@@ -1,12 +1,12 @@
-import chalk from "chalk";
 import { executeMainMenuOption, exitGame, playGame, showCredits } from "./helpers/menu.js";
+import { askName } from "./helpers/questions.js";
+import { config } from "./index.js";
+import { IConfiguration } from "./interfaces/IConfiguration.js";
 import { IMenuItem } from "./interfaces/IMenuItem.js";
 import { MenuOption } from "./types/Menu.js";
+import chalk from "chalk";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { IConfiguration } from "./interfaces/IConfiguration.js";
-import { config } from "./index.js";
-import { askName } from "./helpers/questions.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const distPath = path.dirname(__filename);

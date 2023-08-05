@@ -1,11 +1,11 @@
-import { IParsedQuestion, IQuestion } from "../interfaces/IQuestion.js";
-import { decode } from "html-entities";
-import inquirer from "inquirer";
-import { clamp, getApiData, shuffleArray } from "../utils.js";
-import { IConfiguration } from "../interfaces/IConfiguration.js";
 import { defaultConfig } from "../consts.js";
+import { IConfiguration } from "../interfaces/IConfiguration.js";
+import { IParsedQuestion, IQuestion } from "../interfaces/IQuestion.js";
+import { clamp, getApiData, shuffleArray } from "../utils.js";
 import { logger } from "./logger.js";
 import chalk from "chalk";
+import { decode } from "html-entities";
+import inquirer from "inquirer";
 
 export async function askName(): Promise<string> {
     const answers = await inquirer.prompt({

@@ -1,16 +1,16 @@
+import { BANNER_TEXT, GAME_NAME } from "../consts.js";
+import { IConfiguration } from "../interfaces/IConfiguration.js";
 import { IMenuItem } from "../interfaces/IMenuItem.js";
 import { MenuOption } from "../types/Menu.js";
+import { clamp, dedent, getVersion, sleep } from "../utils.js";
+import { askQuestion, createQuestion, getQuestions } from "./questions.js";
+import chalk from "chalk";
 import figlet from "figlet";
 import gradient from "gradient-string";
+import { decode } from "html-entities";
 import inquirer from "inquirer";
 import process from "node:process";
-import { BANNER_TEXT, GAME_NAME } from "../consts.js";
-import { askQuestion, createQuestion, getQuestions } from "./questions.js";
-import { IConfiguration } from "../interfaces/IConfiguration.js";
 import ora from "ora";
-import { decode } from "html-entities";
-import { clamp, dedent, getVersion, sleep } from "../utils.js";
-import chalk from "chalk";
 
 export function showMenuBanner(): void {
     console.log(dedent`
