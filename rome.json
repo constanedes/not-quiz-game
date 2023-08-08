@@ -1,6 +1,6 @@
 {
     "organizeImports": {
-        "enabled": true
+        "enabled": false
     },
     "formatter": {
         "enabled": true,
