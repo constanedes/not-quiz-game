@@ -21,26 +21,27 @@ Default: 3
 
 ### Number of questions
 
-Command: `-q or --questions`
-Type: Number between 3 and 20
+Command: `-q or --questions` \
+Type: Number between 3 and 20 \
 Default: 6
 
-### Game Mode 
+### Game Mode
 
-Command: `-m or --mode`
-Type: String - `multiple` | `boolean`
+Command: `-m or --mode` \
+Type: String - `multiple` | `boolean` \
 Default: `multiple`
 
 ### Difficulty
 
 Command: `-d or --difficulty`  \
 Type: String - `any`  |  `easy`  |  `medium`  | `hard`  \
-Default: `medium` 
+Default: `medium`
 
-### Topic 
+### Topic
+
 Command: `-t or --topic`  \
 Type: Number between 9 and 32 - Click for view all [available topics](https://opentdb.com/api_category.php)  \
-Default: 18 - (Science: Computers)
+Default: 18 - (Science: Computers) \
 
 | Id | Name                                  |
 |----|---------------------------------------|
@@ -71,9 +72,9 @@ Default: 18 - (Science: Computers)
 
 ### Debug mode (view configurations on start menu)
 
-Command: Just add `--debug` to your params
-Type: Boolean
-Default: Disabled
+Command: Just add `--debug` to your params \
+Type: Boolean \
+Default: Disabled \
 
 ## Questions
 
