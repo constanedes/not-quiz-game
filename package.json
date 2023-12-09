@@ -1,6 +1,6 @@
 {
   "name": "not-quiz-game",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "A CLI based interactive question and answer game",
   "keywords": [
     "game",
