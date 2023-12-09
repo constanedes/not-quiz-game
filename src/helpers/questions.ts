@@ -46,11 +46,10 @@ export async function getQuestions(config: IConfiguration) {
 }
 
 export function createQuestion(questions: Map<number, IQuestion>): IParsedQuestion {
-    // rome-ignore lint/style/noNonNullAssertion: <explanation>
     const question = questions.get(questions.size - 1)!;
-
     const name = `${question.category[0].toLowerCase()}${question.difficulty[0]}`;
-    const options = [...question.incorrect_answers.map((q: string) => decode(q)), decode(question.correct_answer)];
+    const options = [...question.incorrect_answers.map(q => decode(q)), decode(question.correct_answer)];
+
     return { name, question: question.question, options, answer: question.correct_answer };
 }
 
@@ -60,7 +59,7 @@ export async function askQuestion(question: IParsedQuestion) {
         type: "list",
         message: decode(question.question),
         choices: shuffleArray(question.options),
-        suffix: `${chalk.magenta(" -")}${chalk.greenBright(" You got options, choose wisely!")}`,
+        suffix: `${chalk.magenta(" -")}${chalk.greenBright(" You got options, choose wisely")}`,
     });
 
     return answers[question.name];

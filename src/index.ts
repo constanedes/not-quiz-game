@@ -35,14 +35,14 @@ const program = new Command()
 const cli: IConfiguration = program.opts();
 export const config: IConfiguration = { ...defaultConfig, ...cli };
 
-async function main() {
+function main(): void {
+    if (cli.debug) initialDebug();
     showMenuBanner();
-    await executeMainMenuOption(gameOptions);
+    executeMainMenuOption(gameOptions);
 }
 
 try {
-    if (process.env.NODE_ENV !== "production" || cli.debug) initialDebug();
-    await main();
+    main();
 } catch (e) {
     logger.error(e);
 }

@@ -1,6 +1,6 @@
 {
   "name": "not-quiz-game",
-  "version": "0.1.8",
+  "version": "1.2.0",
   "description": "A CLI based interactive question and answer game",
   "keywords": [
     "game",
@@ -24,8 +24,8 @@
     "build": "tsc",
     "build:watch": "tsc -w",
     "dev": "nodemon build/src/index.js",
-    "format": "rome format src --write",
-    "lint": "rome format src --verbose && rome check --apply-unsafe src",
+    "lint": "eslint ./src --fix",
+    "format": "prettier --write src",
     "prepare": "git config --local core.hooksPath .githooks || echo 'Can not set git hooks'",
     "prestart": "pnpm i && pnpm run build",
     "start": "node build/src/index.js"
@@ -41,16 +41,18 @@
     "gradient-string": "2.0.2",
     "html-entities": "2.4.0",
     "inquirer": "9.2.12",
-    "nodemon": "3.0.2",
-    "ora": "7.0.1",
-    "type-fest": "4.8.3"
+    "ora": "7.0.1"
   },
   "devDependencies": {
+    "@types/chalk-animation": "^1.6.3",
     "@types/figlet": "1.5.8",
     "@types/gradient-string": "1.1.5",
     "@types/inquirer": "9.0.7",
     "@types/node": "20.10.4",
-    "rome": "12.1.3",
+    "eslint": "^8.55.0",
+    "nodemon": "3.0.2",
+    "prettier": "3.1.0",
+    "type-fest": "4.8.3",
     "typescript": "5.3.3"
   },
   "engines": {

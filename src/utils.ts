@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { setTimeout } from "timers/promises";
 import { type PackageJson } from "type-fest";
+
 /**
  * Sleep X miliseconds
  * @param time miliseconds to sleep
@@ -53,7 +54,7 @@ export async function countdown(seconds: number) {
     console.clear();
 
     function wait(ms: number): Promise<void> {
-        return new Promise((resolve) => setTimeout(ms, resolve));
+        return new Promise(resolve => setTimeout(ms, resolve));
     }
 
     for (let currentSeconds = seconds; currentSeconds > 0; currentSeconds--) {
