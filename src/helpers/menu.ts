@@ -34,7 +34,7 @@ export function showCredits(): void {
     console.log(dedent`
         ${chalk.cyanBright("Author: Constantino Edes 👨‍💻")}
         Version: ${getVersion()}
-        Thank you for playing❕
+        Thanks for playing❕
         ${GAME_NAME} © 2023
     `);
 }

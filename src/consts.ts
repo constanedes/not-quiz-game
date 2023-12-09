@@ -39,6 +39,6 @@ export const defaultConfig: IConfiguration = {
     lives: 3,
     difficulty: "medium",
     topic: 18,
-    questions: 10,
+    questions: 6,
     mode: "multiple",
 } as const;
