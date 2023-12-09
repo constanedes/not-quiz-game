@@ -3,8 +3,8 @@ import { defaultConfig, gameOptions } from "./consts.js";
 import { logger } from "./helpers/logger.js";
 import { executeMainMenuOption, showMenuBanner } from "./helpers/menu.js";
 import { IConfiguration } from "./interfaces/IConfiguration.js";
-import { getVersion, isDebugging } from "./utils.js";
-import { Command, Option } from "@commander-js/extra-typings";
+import { getVersion } from "./utils.js";
+import { Command, Option } from "commander";
 
 function initialDebug() {
     logger.info("App running...");
@@ -41,7 +41,7 @@ async function main() {
 }
 
 try {
-    if (isDebugging() || cli.debug) initialDebug();
+    if (process.env.NODE_ENV !== "production" || cli.debug) initialDebug();
     await main();
 } catch (e) {
     logger.error(e);

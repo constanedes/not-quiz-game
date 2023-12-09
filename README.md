@@ -12,16 +12,6 @@ yarn: `yarn dlx not-quiz-game`
 
 All the questions are fetched from [Open Trivia Database](https://opentdb.com/).
 
-### Build and run the project
-
-In the root of the proyect run `pnpm i` in your terminal for install the dependencies
-(_If you not have [pnpm](https://pnpm.io/) download [nodejs](https://nodejs.org/es) and execute `npm i -g pnpm`_)
-
-You have 2 options for build and run the proyect
-
-- Transpiled version (recommended): `pnpm run build` and `pnpm run start`
-- With Docker: ``
-
 ### Special thanks to Fireship
 
 This game is based on the [JavaScript Millionaire CLI Tool](https://github.com/fireship-io/javascript-millionaire) tutorial. Check [Fireship](https://github.com/fireship-io) repository for more cool things.
