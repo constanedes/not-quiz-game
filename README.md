@@ -41,7 +41,7 @@ Default: `medium`
 
 Command: `-t or --topic`  \
 Type: Number between 9 and 32 - Click for view all [available topics](https://opentdb.com/api_category.php)  \
-Default: 18 - (Science: Computers) \
+Default: 18 - (Science: Computers)
 
 | Id | Name                                  |
 |----|---------------------------------------|
@@ -74,7 +74,7 @@ Default: 18 - (Science: Computers) \
 
 Command: Just add `--debug` to your params \
 Type: Boolean \
-Default: Disabled \
+Default: Disabled
 
 ## Questions
 
